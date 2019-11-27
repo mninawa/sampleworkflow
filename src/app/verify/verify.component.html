@@ -1,0 +1,61 @@
+<form [formGroup]="form" class="editForm">
+  <div class="form-horizontal">
+    <div class="tab-pane fade in active">
+      <h4 class="head text-center">{{ title }}</h4>
+      <br />
+
+      <div >
+        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-xs-8">
+          <div class="row">
+              <div class="form-group">
+                <label class="control-label" for="onetimepin">Please enter the verification code sent to your mobile number</label>
+                <input
+                  class="form-control input-xs"
+                formControlName="onetimepin"
+                  type="text"
+                  placeholder="One Time Pin"
+                  (keyup)="onOnetimePinValidate($event)"
+                />
+                <div class="validations" >
+                  <span>
+                    <i
+                      class="fa fa-times-circle"
+                      style="color:firebrick;"
+                      *ngIf="onetimepinInvalid"
+                    ></i>
+                  </span>
+                </div>
+                <div class="validations">
+                    <span>
+                      <i
+                        class="fa fa-check-circle"
+                        style="color:green;"
+                        *ngIf="onetimepinValid"
+                      ></i>
+                     
+                    </span>
+                  </div>
+              </div>
+            </div>
+        
+    <div class="form-horizontal text-center">
+        <button class="btn btn-success btn-outline-rounded  btn-xs"
+          
+         (click)="sendOneTimePin(form)"> Re-Send 
+         <span style="margin-left:10px;" class="glyphicon glyphicon-share"></span></button>
+      <button
+        class="btn btn-success btn-outline-rounded btn-info btn-xs"
+        [disabled]="!onetimepinValid" (click)="goToNext(form)" >
+        Next
+        <span
+          style="margin-left:10px;"
+          class="glyphicon glyphicon-arrow-right"
+        ></span>
+      </button>
+    </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</form>
